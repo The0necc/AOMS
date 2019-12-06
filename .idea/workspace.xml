@@ -112,8 +112,8 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_cmdb/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+            <state relative-caret-position="198">
+              <caret line="21" column="69" lean-forward="true" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -187,22 +187,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/static/bower_components/Flot/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/bootstrap-colorpicker/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/bootstrap-datepicker/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/bootstrap-daterangepicker/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/bootstrap/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/chart.js/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/ckeditor/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/eve-raphael/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/ion.rangeSlider/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/jquery-knob/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/jquery-slimscroll/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/jquery-ui/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/morris.js/package.json" />
-      <path value="$PROJECT_DIR$/static/bower_components/select2/package.json" />
-    </packageJsonPaths>
+    <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1366" />
@@ -302,14 +287,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44148937" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4680851" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.5951116" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1076759" />
@@ -665,8 +649,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web_cmdb/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="198">
+          <caret line="21" column="69" lean-forward="true" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
         </state>
       </provider>
     </entry>
