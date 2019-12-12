@@ -1,27 +1,59 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}资产详细{% endblock %}
 
+{% load static %}
+{% block head %}
+    <a class="navbar-brand" href="{% url "home" %}">CMDB资产管理</a>
+{% endblock %}
 {% block css %}
 
 {% endblock %}
 
-{% block breadcrumb %}
-<!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        资产详细
-        <small>asset info</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
-        <li>资产总表</li>
-        <li class="active">资产详细</li>
-      </ol>
-    </section>
-{% endblock %}
-
 {% block content %}
+    <section class="content">
+        <br>
+        <h3 class="box-title">
+            <B>资产：<label style="color: pink;">{{ asset.ip }}</label>详细信息</B>
+        </h3>
+        <div class="">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                          data-toggle="tab">基本信息</a>
+                </li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                           data-toggle="tab">详细信息</a>
+                </li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                           data-toggle="tab">变更记录</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
+                                           data-toggle="tab">备注</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                {# 基本信息#}
+                <div role="tabpanel" class="tab-pane active" id="home">
+                     {% include 'detail_base.html' %}
+                </div>
+                {# 详细信息#}
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    {% include 'detail_hardware.html' %}
+                </div>
+                {# 变更记录#}
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    {% include 'detail_log.html' %}
+                </div>
+                {# 备注#}
+                <div role="tabpanel" class="tab-pane" id="settings">
+                    {% include 'detail_memo.html' %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
 
 {% endblock %}
 

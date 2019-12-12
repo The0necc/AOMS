@@ -18,8 +18,9 @@ from django.contrib import admin
 from web_home import views as web_home_views
 urlpatterns = [
     url(r'^asset/', include('web_cmdb.urls')),
+    url(r'^api/(?P<version>\w+)/', include('web_api.urls')),
     url(r'^login/$', web_home_views.login, name='login'),
     url(r'^home/$', web_home_views.home, name='home'),
     url(r'^logout/$', web_home_views.logout, name='logout'),
-    url(r'', web_home_views.login, name='login')
+    # url(r'', web_home_views.login, name='login')
 ]

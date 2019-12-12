@@ -37,19 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'web_cmdb.apps.WebCmdbConfig',
+    'rest_framework',
     'web_home.apps.WebHomeConfig',
+    'web_cmdb.apps.WebCmdbConfig',
+    'web_api.apps.WebApiConfig',
+    'web_cmdb.templatetags'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'web_cmdb.middlewares.rbac.RbacMiddleWare'
+    'web_cmdb.middlewares.rbac.RbacMiddleWare'
 ]
 
 ROOT_URLCONF = 'AOMS.urls'
@@ -148,10 +151,24 @@ STATICFILES_DIRS = [
 
 # rbac白名单
 RBAC_WHILE_URL = [
-    r'^/login/$',r'^/logout/$',r'^/admin/'
+    r'^/login/$',r'^/logout/$',r'^/admin/',r'^/api/',
 ]
 
 #rbac免认证名单
 RBAC_PASS_URL = [
-    r'^/home/$'
+    r'^/home/$',r'^/api/',
 ]
+
+# rest_framework 配置文件
+REST_FRAMEWORK = {
+    "ALLOWED_VERSIONS":['v1','v2'],
+    # "DEFAULT_VERSIONING_CLASS":"rest_framework.versioning.URLPathVersioning",
+}
+
+# 资产入库配置文件
+CMDB_PLUGINS_DICT = {
+    'disk':"web_api.plugins.disk.Disk",
+    'cpu':"web_api.plugins.cpu_and_board.CPUAndBoard",
+    'board':"web_api.plugins.cpu_and_board.CPUAndBoard",
+    'memory':"web_api.plugins.memory.Memory",
+}

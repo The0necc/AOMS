@@ -22,6 +22,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from web_cmdb import views as web_cmdb_views
+
 urlpatterns = [
     url(r'^dashboard/$', web_cmdb_views.dashboard,name='asset/dashboard'),
     url(r'^index/$', web_cmdb_views.index,name='asset/index'),

@@ -12,15 +12,15 @@ def login(request):
     md5.update(password.encode('utf-8'))  # 将要加密的内容格使用选择后的方法进行加密
     md5_password = md5.hexdigest()
     user_obj = models.User.objects.filter(username=username,password=md5_password).first()
-    print(username,md5_password,user_obj)
+    # print(username,md5_password,user_obj)
     if user_obj:
         request.session['is_login'] = True
+        request.session['user_id'] = user_obj.id
         return redirect('/home/')
         # return render(request,'home.html')
     return render(request, 'login.html', {'error': '用户名或密码错误~'})
 
 def home(request):
-    print(1230)
     return render(request,'home.html')
 
 def logout(request):

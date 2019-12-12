@@ -1,239 +1,133 @@
 {% load static %}
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}base{% endblock %}</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{% static 'plugins/Ionicons/css/ionicons.min.css' %}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect. -->
-    <link rel="stylesheet" href="{% static 'dist/css/skins/skin-blue.min.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    {% block css %}{% endblock %}
+    <title>自动化运维系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static "/vendor/metisMenu/metisMenu.min.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "/dist/css/sb-admin-2.css" %}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static "/vendor/morrisjs/morris.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static "/vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    {% block css %}
+    {% endblock %}
 
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
 
-    <!-- Main Header -->
-    <header class="main-header">
-
-        <!-- Logo -->
-        <a href="#" class="logo">
-
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            {#            <span class="logo-mini"><b>CMDB</b></span>#}
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>CMDB</b></span>
-        </a>
-
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <!-- 管理员 -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-            </a>
-            <div>
-                <ul class="nav navbar-nav" style="margin-top: 15px">
-                    <li>
-                        <span class="label"><a href="{% url 'asset/index' %}" style="color: white">代码发布</a></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {% block head %}
+            {% endblock %}
+        </div>
+        <ul class="nav navbar-top-links navbar-left" style="margin-left: 6%;">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa">配置管理</i>
+                </a>
+            </li>
+                        <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa">私有云</i>
+                </a>
+            </li>
+                        <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa">代码发布</i>
+                </a>
+            </li>
+                        <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa">监控</i>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="{% url "logout" %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav" style="margin-top: 15px">
+            </li>
+        </ul>
+        <!-- 侧边栏 -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+
                     <li>
-                        <span class="label"><a href="{% url 'asset/index' %}" style="color: white">堡垒机</a></span>
+                        <a href="{% url 'asset/dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav" style="margin-top: 15px">
                     <li>
-                        <span class="label"><a href="{% url 'asset/index' %}" style="color: white">配置管理</a></span>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav" style="margin-top: 15px">
-                    <li>
-                        <span class="label"><a href="{% url 'asset/index' %}" style="color: white">监控</a></span>
+                        <a href="{% url 'asset/index' %}"><i class="fa fa-dashboard fa-fw"></i> 资产列表</a>
                     </li>
                 </ul>
             </div>
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown user user-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <!-- The user image in the navbar-->
-                            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="user-image" alt="User Image">
-                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">系统管理员</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- The user image in the menu -->
-                            <li class="user-header">
-                                <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle"
-                                     alt="User Image">
+        </div>
+    </nav>
 
-                                <p>
-                                    系统管理员
-                                    <small>2019-4-12</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="{% url 'logout' %}" class="btn btn-default btn-flat">Sign out</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
-                </div>
-                <div class="pull-left info">
-                    <p>Admin</p>
-                    <!-- Status -->
-                    <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
-                </div>
-            </div>
-
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
-                              class="fa fa-search"></i>
-                      </button>
-                    </span>
-                </div>
-            </form>
-            <!-- /.search form -->
-
-            <!-- Sidebar Menu -->
-            <ul class="sidebar-menu" data-widget="tree">
-                {#        <li class="header">导航栏</li>#}
-                <!-- Optionally, you can add icons to the links -->
-                <li><a href="{% url 'asset/dashboard' %}"><i class="fa fa-dashboard"></i> <span>仪表盘</span></a></li>
-                <li><a href="{% url 'asset/index' %}"><i class="fa fa-table"></i> <span>资产总表</span></a></li>
-            </ul>
-            <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-
-        {% block breadcrumb %}{% endblock %}
-
-        <!-- Main content -->
-        <section class="content container-fluid">
-            {#        主体内容全放到这里！#}
-            {% block content %}{% endblock %}
-        </section>
-        <!-- /.content -->
-
+    <div id="page-wrapper">
+        {% block breadcrumb %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
-    <!-- /.content-wrapper -->
-
-
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        {#    <div class="pull-right hidden-xs">#}
-        {#      http://www.liujiangblog.com#}
-        {#    </div>#}
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2019 <a href="http://youzi.site" target="_blank">萧晓的个人博客</a>.</strong> All rights
-        reserved.
-    </footer>
-
 
 </div>
-<!-- ./wrapper -->
+<!-- /#wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
+<!-- jQuery -->
+<script src="{% static "/vendor/jquery/jquery.min.js" %}"></script>
 
-<!-- jQuery 3 -->
-<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-<!-- AdminLTE App -->
-<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{% static "/vendor/bootstrap/js/bootstrap.min.js" %}"></script>
 
-{% block script %}{% endblock %}
+<!-- Metis Menu Plugin JavaScript -->
+<script src="{% static "/vendor/metisMenu/metisMenu.min.js" %}"></script>
 
-<script>
-    $('ul.sidebar-menu li').each(function (i) {
-        if ($(this).children().first().attr('href') === '{{ request.path }}') {
-            $(this).addClass('active');
-        } else {
-        }
-    });
-</script>
+<!-- Morris Charts JavaScript -->
+<script src="{% static "/vendor/raphael/raphael.min.js" %}"></script>
+<script src="{% static "/vendor/morrisjs/morris.min.js" %}"></script>
+<script src="{% static "/data/morris-data.js" %}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{% static "/dist/js/sb-admin-2.js" %}"></script>
+{% block script %}
+{% endblock %}
+
 </body>
+
 </html>

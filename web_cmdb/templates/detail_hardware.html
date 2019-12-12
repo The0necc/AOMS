@@ -1,0 +1,148 @@
+<h4><b>CPU:</b></h4>
+<table border="1" class="table  table-responsive"
+       style="border-left:3px solid purple;border-bottom:1px solid purple">
+    <thead>
+    <tr>
+        <th style="width: 45%">CPU型号</th>
+        <th style="width: 15%">物理CPU个数</th>
+        <th>CPU核数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ asset.server.cpu_model|default:'N/A' }}</td>
+        <td>{{ asset.server.cpu_count|default:'1' }}</td>
+        <td>{{ asset.server.cpu_physical_count|default:'1' }}</td>
+    </tr>
+    </tbody>
+</table>
+<h4><b>主板:</b></h4>
+<table border="1" class="table  table-responsive"
+       style="border-left:3px solid pink;border-bottom:1px solid pink">
+    <thead>
+    <tr>
+        <th style="width: 45%">主板SN号</th>
+        <th style="width: 15%">主板型号</th>
+        <th>主板厂商</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ asset.server.board_sn|default:'N/A' }}</td>
+        <td>{{ asset.server.board_model|default:'N/A' }}</td>
+        <td>{{ asset.server.board_manufacturer|default:'N/A' }}</td>
+    </tr>
+    </tbody>
+</table>
+<h4><b>内存:</b></h4>
+<table border="1" class="table  table-responsive"
+       style="border-left:3px solid orangered;border-bottom:1px solid orangered">
+    <thead>
+    <tr>
+        <th style="width:5%;">序号</th>
+        <th>型号</th>
+        <th>容量</th>
+        <th>插槽</th>
+        <th>制造商</th>
+        <th>SN</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for ram in asset.ram_set.all %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ ram.model|default:'N/A' }}</td>
+            <td>{{ ram.capacity|default:'N/A' }}</td>
+            <td>{{ ram.slot }}</td>
+            <td>{{ ram.manufacturer|default:'N/A' }}</td>
+            <td>{{ ram.sn|default:'N/A' }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<h4><b>硬盘:</b></h4>
+<table border="1" class="table  table-responsive"
+       style="border-left:3px solid brown;border-bottom:1px solid brown">
+    <thead>
+    <tr>
+        <th style="width:5%;">序号</th>
+        <th>型号</th>
+        <th>容量</th>
+        <th>插槽</th>
+        <th>接口类型</th>
+        <th>制造商</th>
+        <th>SN</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for disk in asset.disk_set.all %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ disk.model|default:'N/A' }}</td>
+            <td>{{ disk.capacity|default:'N/A' }}</td>
+            <td>{{ disk.slot|default:'N/A' }}</td>
+            <td>{{ disk.interface_type }}</td>
+            <td>{{ disk.manufacturer|default:'N/A' }}</td>
+            <td>{{ disk.sn }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<h4><b>网卡:</b></h4>
+<table border="1" class="table  table-responsive"
+       style="border-left:3px solid #a59b1a;border-bottom:1px solid #a59b1a">
+    <thead>
+    <tr>
+        <th style="width:5%;">序号</th>
+        <th>名称</th>
+        <th>型号</th>
+        <th>MAC</th>
+        <th>IP</th>
+        <th>掩码</th>
+        <th>绑定地址</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for nic in asset.nic_set.all %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ nic.name|default:'N/A' }}</td>
+            <td>{{ nic.model }}</td>
+            <td>{{ nic.mac }}</td>
+            <td>{{ nic.ip_address|default:'N/A' }}</td>
+            <td>{{ nic.net_mask|default:'N/A' }}</td>
+            <td>{{ nic.bonding|default:'N/A' }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

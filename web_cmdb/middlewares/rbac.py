@@ -10,9 +10,7 @@ from django.conf import settings
 import re
 class RbacMiddleWare(MiddlewareMixin):
     def process_request(self,request):
-
         url = request.path_info
-        print(url)
         # 白名单校验
         for item in settings.RBAC_WHILE_URL:
             if re.match(item, url):  # 使用正则表达式来匹配url
@@ -27,7 +25,6 @@ class RbacMiddleWare(MiddlewareMixin):
         # 免认证校验
         for item in settings.RBAC_PASS_URL:
             if re.match(item, url):  # 使用正则表达式来匹配url
-                print(123)
                 return
 
         # 等添加权限的时候添加上
